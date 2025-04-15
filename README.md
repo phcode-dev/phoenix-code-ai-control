@@ -17,7 +17,11 @@ Phoenix Code AI Control provides system administrators and users with tools to m
 - Administrative access for system-wide installation
 - Phoenix Code Desktop or Browser version
 
-### Desktop Installation Scripts
+### Installing Configuration Scripts
+
+Configure AI controls by running the appropriate script for your platform:
+
+> **Note:** The following scripts configure system-wide settings and do not require Phoenix Code to be installed on the administrator's machine.
 
 Download and run the appropriate script for your platform:
 
@@ -29,21 +33,30 @@ Download and run the appropriate script for your platform:
 
 1. Download the Windows script
 2. Right-click and select "Run as administrator"
-3. Follow the on-screen prompts
+3. Execute with required parameters, for example:
+   ```
+   setup_phoenix_ai_control_win.bat --managedByEmail school.admin@example.edu --disableAI
+   ```
 
 #### macOS Installation
 
 1. Download the macOS script
 2. Open Terminal and navigate to your download location
 3. Run: `chmod +x setup_phoenix_ai_control_mac.sh`
-4. Execute: `sudo ./setup_phoenix_ai_control_mac.sh`
+4. Execute with required parameters:
+   ```
+   sudo ./setup_phoenix_ai_control_mac.sh --managedByEmail school.admin@example.edu --disableAI
+   ```
 
 #### Linux Installation
 
 1. Download the Linux script
 2. Open Terminal and navigate to your download location
 3. Run: `chmod +x setup_phoenix_ai_control_linux.sh`
-4. Execute: `sudo ./setup_phoenix_ai_control_linux.sh`
+4. Execute with required parameters:
+   ```
+   sudo ./setup_phoenix_ai_control_linux.sh --managedByEmail school.admin@example.edu --disableAI
+   ```
 
 ## Installation Script CLI Options
 
@@ -60,14 +73,16 @@ All installation scripts support the same command-line options:
 
 ```bash
 # Enable AI with administrative contact
-sudo ./setup_phoenix_ai_control_linux.sh --managedByEmail admin@example.com
+sudo ./setup_phoenix_ai_control_linux.sh --managedByEmail school.admin@example.edu
 
 # Enable AI for specific users only
 sudo ./setup_phoenix_ai_control_linux.sh --allowedUsers alice,bob --disableAI
 
 # Complete setup with all options
-sudo ./setup_phoenix_ai_control_linux.sh --managedByEmail admin@example.com --allowedUsers alice,bob --disableAI
+sudo ./setup_phoenix_ai_control_linux.sh --managedByEmail school.admin@example.edu --allowedUsers alice,bob --disableAI
 ```
+
+> **Note:** Always replace `school.admin@example.edu` with an actual administrator email address. The scripts will detect and reject placeholder email addresses.
 
 ### Configuration File Locations
 
@@ -81,7 +96,17 @@ These files are created with read-only permissions for regular users and can onl
 
 ## Verifying AI Control Status
 
-### In Desktop App
+To verify the status of AI controls on end-user machines, the Phoenix Code AI Control extension must be installed:
+
+### Installing the Extension
+
+1. Open Phoenix Code
+2. Navigate to File → Extension Manager
+3. Search for "Phoenix Code AI Control"
+4. Click the Install button
+5. Restart Phoenix Code when prompted
+
+### Checking Status in Desktop App
 
 1. Open Phoenix Code
 2. Navigate to File → Check AI Control Status
@@ -92,34 +117,36 @@ These files are created with read-only permissions for regular users and can onl
    - Managed by (administrative contact)
    - List of allowed users (if configured)
 
-### In Browser Version
+### Checking Status in Browser Version
 
 1. Open Phoenix Code in your web browser
-2. Navigate to File → Check AI Control Status
-3. The browser will check if `ai.phcode.dev` is accessible:
+2. Install the extension (File → Extension Manager → "Phoenix Code AI Control")
+3. Navigate to File → Check AI Control Status
+4. The browser will check if `ai.phcode.dev` is accessible:
    - First shows "Checking if AI is disabled..."
    - Then displays whether AI is available or blocked
    - Provides information on firewall configuration
 
 ## Configuration Options
 
-### Network Blocking (Recommended for Schools)
+### Desktop Applications (Recommended Method)
 
-The simplest way to disable AI functionality is to block access to:
-- `ai.phcode.dev`
+For desktop installations of Phoenix Code, we strongly recommend using the installation scripts described above. This approach provides:
 
-Add this domain to your firewall or content filtering system. The browser version of Phoenix Code will automatically detect if the domain is unreachable.
+1. System-wide configuration via protected config files
+2. Granular control with user-level permissions
+3. Ability to selectively enable AI for specific users
 
-### User-Level Control (Desktop Only)
+Only administrative users can modify this configuration.
 
-For more granular control on desktop installations:
+### Network Blocking (For Browser Version at https://phcode.dev)
 
-1. The installation scripts create a configuration file at a system-wide location
-2. This file contains:
-   - `disableAI`: Boolean flag to control global AI access
-   - `managedByEmail`: Optional administrative contact
-   - `allowedUsers`: Optional array of usernames with AI access
-3. Only administrative users can modify this configuration
+For schools using the browser version of Phoenix Code, network-level blocking is the recommended approach:
+
+1. Block access to: `ai.phcode.dev`
+2. Add this domain to your firewall or content filtering system
+
+The browser version of Phoenix Code will automatically detect if the domain is unreachable and display appropriate status messages.
 
 ## FAQ
 
@@ -130,11 +157,6 @@ In both the desktop and browser versions, go to File → Check AI Control Status
 ### Can I allow specific users to access AI features?
 
 Yes, but only in the desktop version. Use the `--allowedUsers` parameter with a comma-separated list of usernames when running the installation script. These users will be able to access AI features even when disabled system-wide with the `--disableAI` flag.
-
-### What's the difference between browser and desktop control?
-
-- **Browser Control**: Limited to network-level blocking of `ai.phcode.dev`
-- **Desktop Control**: Supports both network blocking and fine-grained user permissions through the configuration file
 
 ### Is AI control mandatory?
 
@@ -148,9 +170,15 @@ No, all other features of Phoenix Code will continue to work normally. Only the 
 
 Simply run the installation script again with the new parameters. The script will overwrite the existing configuration file with your new settings.
 
+### What's the difference between browser and desktop control?
+
+- **Browser Version**: Only supports network-level blocking of `ai.phcode.dev` through your firewall
+- **Desktop Version**: Provides comprehensive control through configuration files with user-specific permissions
+
 ### Does this completely prevent AI usage?
 
-For the desktop version, the control is comprehensive when properly configured. For the browser version, you must implement network-level blocking of the `ai.phcode.dev` domain to effectively control access.
+- **Desktop Version**: Yes, the control is comprehensive when properly configured using the installation scripts
+- **Browser Version**: Only if you implement network-level blocking of the `ai.phcode.dev` domain
 
 ### How can I verify that the firewall is properly blocking AI access?
 

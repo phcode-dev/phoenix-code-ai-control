@@ -59,6 +59,12 @@ while [[ $# -gt 0 ]]; do
             ;;
         --managedByEmail)
             managedByEmail="$2"
+            # Check if email is the placeholder or empty
+            if [[ "$managedByEmail" == "school.admin@example.edu" || -z "$managedByEmail" ]]; then
+                echo "Error: Please enter a valid admin email address."
+                echo "school.admin@example.edu is only meant as an example!"
+                exit 1
+            fi
             shift 2
             ;;
         --allowedUsers)

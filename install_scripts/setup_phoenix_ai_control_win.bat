@@ -23,6 +23,17 @@ if "%~1"=="" goto :continue
 if "%~1"=="--managedByEmail" (
     shift
     set "managedByEmail=%~1"
+    :: Check if email is the placeholder or empty
+    if "%managedByEmail%"=="school.admin@example.edu" (
+        echo Error: Please enter a valid admin email address.
+        echo school.admin@example.edu is only meant as an example!
+        exit /b 1
+    )
+    if "%managedByEmail%"=="" (
+        echo Error: Email address cannot be empty.
+        echo Example: --managedByEmail school.admin@example.edu
+        exit /b 1
+    )
     shift
     goto :parse_args
 )
