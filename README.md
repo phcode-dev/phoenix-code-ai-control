@@ -114,7 +114,7 @@ To verify the status of AI controls on end-user machines, the Phoenix Code AI Co
 ### Checking Status in Desktop App
 
 1. Open Phoenix Code
-2. Navigate to File → Check AI Control Status
+2. Navigate to View → AI Control Status
 3. A dialog will appear showing your current configuration:
    - AI Status (Enabled/Disabled)
    - Platform information
@@ -126,7 +126,7 @@ To verify the status of AI controls on end-user machines, the Phoenix Code AI Co
 
 1. Open Phoenix Code in your web browser
 2. Install the extension (File → Extension Manager → "Phoenix Code AI Control")
-3. Navigate to File → Check AI Control Status
+3. Navigate to View → AI Control Status
 4. The browser will check if `ai.phcode.dev` is accessible:
    - First shows "Checking if AI is disabled..."
    - Then displays whether AI is available or blocked
@@ -157,7 +157,7 @@ The browser version of Phoenix Code will automatically detect if the domain is u
 
 ### How do I know if AI control is working?
 
-In both the desktop and browser versions, go to File → Check AI Control Status to see a detailed report.
+In both the desktop and browser versions, go to View → AI Control Status to see a detailed report.
 
 ### Can I allow specific users to access AI features?
 
@@ -187,7 +187,7 @@ Simply run the installation script again with the new parameters. The script wil
 
 ### How can I verify that the firewall is properly blocking AI access?
 
-In the browser version, use the "Check AI Control Status" option which will attempt to connect to the AI service and report whether it's accessible or blocked.
+In the browser version, use the View → AI Control Status option which will attempt to connect to the AI service and report whether it's accessible or blocked.
 
 ## Support
 

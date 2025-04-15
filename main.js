@@ -64,10 +64,11 @@ define(function (require, exports, module) {
 
     // Register command for AI Control Status check
     var AI_CONTROL_STATUS_ID = "phoenix.aiControlStatus";
-    CommandManager.register("Check AI Control Status", AI_CONTROL_STATUS_ID, checkAIControlStatus);
+    CommandManager.register("AI Control Status", AI_CONTROL_STATUS_ID, checkAIControlStatus);
 
-    // Add menu item to File menu
-    var menu = Menus.getMenu(Menus.AppMenuBar.FILE_MENU);
+    // Add menu item to View menu, below theme settings
+    var menu = Menus.getMenu(Menus.AppMenuBar.VIEW_MENU);
+    menu.addMenuDivider();
     menu.addMenuItem(AI_CONTROL_STATUS_ID);
 
     // Initialize extension once shell is finished initializing
