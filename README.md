@@ -35,30 +35,33 @@ Download and run the appropriate script for your platform:
 2. Open Command Prompt as Administrator:
    - Press Win+X and select "Command Prompt (Admin)" or "Windows PowerShell (Admin)"
    - Navigate to the download location using `cd` command
-3. Execute with required parameters, for example:
+3. Execute with parameters, for example:
    ```
    setup_phoenix_ai_control_win.bat --managedByEmail school.admin@example.edu --disableAI
    ```
+   Note: The `--managedByEmail` parameter is optional but recommended
 
 #### macOS Installation
 
 1. Download the macOS script
 2. Open Terminal and navigate to your download location
 3. Run: `chmod +x setup_phoenix_ai_control_mac.sh`
-4. Execute with required parameters:
+4. Execute with parameters:
    ```
    sudo ./setup_phoenix_ai_control_mac.sh --managedByEmail school.admin@example.edu --disableAI
    ```
+   Note: The `--managedByEmail` parameter is optional but recommended
 
 #### Linux Installation
 
 1. Download the Linux script
 2. Open Terminal and navigate to your download location
 3. Run: `chmod +x setup_phoenix_ai_control_linux.sh`
-4. Execute with required parameters:
+4. Execute with parameters:
    ```
    sudo ./setup_phoenix_ai_control_linux.sh --managedByEmail school.admin@example.edu --disableAI
    ```
+   Note: The `--managedByEmail` parameter is optional but recommended
 
 ## Installation Script CLI Options
 
@@ -67,7 +70,7 @@ All installation scripts support the same command-line options:
 | Option | Description |
 |--------|-------------|
 | `--help` | Display usage information and help text |
-| `--managedByEmail <email>` | Admin email who manages AI policy. Can be used in your Phoenix managed AI dashboard to selectively enable features and manage usage quotas |
+| `--managedByEmail <email>` | Optional but recommended. Admin email who manages AI policy. Can be used in your Phoenix managed AI dashboard to selectively enable features and manage usage quotas |
 | `--allowedUsers <user1,user2,...>` | Comma-separated list of usernames allowed to use AI even when disabled for others |
 | `--disableAI` | If present, AI will be disabled by default for all users except those specified in `allowedUsers` |
 
@@ -94,7 +97,7 @@ The scripts create configuration files in the following system-wide locations:
 - **macOS**: `/Library/Application Support/Phoenix AI Control/config.json`
 - **Linux**: `/etc/phoenix-ai-control/config.json`
 
-These files are created with read-only permissions for regular users and can only be modified by administrators.
+These files contain your configuration, including the optional but recommended `managedByEmail` field, and are created with read-only permissions for regular users. Only administrators can modify these files.
 
 ## Verifying AI Control Status
 
