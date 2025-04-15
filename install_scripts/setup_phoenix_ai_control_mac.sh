@@ -127,6 +127,11 @@ echo
 echo "Phoenix AI control config written to:"
 echo "$CONFIG_FILE"
 echo
+echo "Configuration contents:"
+echo "----------------------"
+cat "$CONFIG_FILE"
+echo "----------------------"
+echo
 echo "Permissions set to allow only root to write, but everyone to read."
 echo
 echo "NOTE: Running this script again will overwrite any previous configuration."

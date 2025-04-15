@@ -75,6 +75,11 @@ echo.
 echo Phoenix AI control config written to:
 echo %CONFIG_FILE%
 echo.
+echo Configuration contents:
+echo ----------------------
+type "%CONFIG_FILE%"
+echo ----------------------
+echo.
 echo NOTE: Running this script again will overwrite any previous configuration.
 echo       Only the latest settings will be preserved.
 pause
