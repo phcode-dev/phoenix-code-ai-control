@@ -103,7 +103,7 @@ async function getAIControlStatus() {
                     exists: true,
                     isConfigured: true,
                     isEnabled: false,
-                    message: `AI is disabled by system configuration.`,
+                    message: `AI is disabled by your system administrator.`,
                     managedBy: config.managedByEmail || 'Not specified',
                     allowedUsers: config.allowedUsers || [],
                     currentUser: currentUser,

@@ -59,7 +59,7 @@ define(function (require, exports, module) {
             }
         }
 
-        Dialogs.showModalDialog(DefaultDialogs.DIALOG_ID_INFO, "Phoenix AI Control Status", html);
+        Dialogs.showModalDialog(DefaultDialogs.DIALOG_ID_INFO, "Phoenix Code AI Control Status", html);
     }
 
     // Register command for AI Control Status check

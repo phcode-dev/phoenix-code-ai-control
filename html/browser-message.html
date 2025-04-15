@@ -1,22 +1,138 @@
 <div class="container-fluid">
     <style>
-        /* Dark mode styling for browser message */
-        .dark .alert.alert-info {
-            background-color: #1e3a3a; /* Darker teal background */
-            color: #e2e2e2; /* Lighter text */
+        /* Status styles */
+        .alert.alert-success {
+            text-shadow: none;
+            background-color: #dff0d8;
             border: none;
         }
+        .dark .alert.alert-success {
+            text-shadow: none;
+            background-color: #1e3a1e; /* Darker background for better contrast */
+            border: none;
+            color: #ccc; /* Lighter text for better contrast */
+        }
+        .dark .text-success {
+            color: #4caf50 !important; /* Brighter green in dark mode */
+        }
+        .dark .border-success {
+            border-color: #4caf50 !important; /* Match the text color */
+        }
+
+        .alert.alert-info {
+            text-shadow: none;
+            background-color: #d1ecf1;
+            border: none;
+        }
+        .alert.alert-secondary {
+            text-shadow: none;
+            background-color: #e2e3e5;
+            border: none;
+        }
+
+        /* Dark mode styling */
+        .dark .alert.alert-info {
+            background-color: #1e3a3a;
+            color: #ccc;
+            border: none;
+        }
+        .dark .alert.alert-secondary {
+            background-color: #2d3035;
+            color: #ccc;
+            border: none;
+        }
+
+        /* Border colors */
         .dark .border-info {
             border-color: #17a2b8 !important;
         }
+        .dark .border-secondary {
+            border-color: #6c757d !important;
+        }
+
         .dark .link-primary {
             color: #5c9eff !important;
         }
+
+        /* Status display control */
+        #checkingStatus {
+            display: block;
+        }
+        #statusResult {
+            display: none;
+        }
     </style>
-    <div class="alert alert-info border-start border-info border-4 mb-4">
-        <p class="fw-bold">Browser Version</p>
-        <p>Managed AI control is not yet supported in the browser version of Phoenix Code.</p>
+
+    <div id="checkingStatus" class="alert alert-secondary border-start border-secondary border-4 mb-4">
+        <p class="fs-5 mb-2"><strong>AI Status:</strong> Checking if AI is disabled...</p>
     </div>
-    <p>For more information on controlling AI in educational institutions, visit:
-    <a href="https://docs.phcode.dev/docs/control-ai" target="_blank" class="link-primary">https://docs.phcode.dev/docs/control-ai</a></p>
+
+    <div id="statusResult">
+        <div id="aiStatusAlert" class="alert alert-info border-start border-info border-4 mb-4">
+            <p class="fs-5 mb-2"><strong>AI Status:</strong> <span id="statusMessage">Unknown</span></p>
+            <p class="mb-0">To disable Phoenix Code AI in your campus, firewall <code>ai.phcode.dev</code>.</p>
+        </div>
+
+    </div>
+
+    <div class="mt-4">
+        <h4 class="mb-3">Need to Restrict Phoenix Code AI at School or Work?</h4>
+        <p>
+            Visit
+            <a href="https://docs.phcode.dev/docs/control-ai" target="_blank" class="link-primary">https://docs.phcode.dev/docs/control-ai</a>
+            for documentation on how to:
+        </p>
+        <ul class="list-group list-group-flush mb-3">
+            <li class="list-group-item">Disable or manage Phoenix Code AI campus-wide with your IT management tools.</li>
+            <li class="list-group-item">Allow specific users to access AI.</li>
+        </ul>
+    </div>
+
+    <script>
+        // Check if AI is reachable
+        fetch('https://ai.phcode.dev/hello', {
+            method: 'GET',
+            cache: 'no-cache',
+            mode: 'no-cors',
+            timeout: 5000
+        })
+        .then(response => {
+            document.getElementById('checkingStatus').style.display = 'none';
+            document.getElementById('statusResult').style.display = 'block';
+
+            // Show AI is available
+            const statusAlert = document.getElementById('aiStatusAlert');
+            const statusMessage = document.getElementById('statusMessage');
+
+            statusAlert.classList.remove('alert-info');
+            statusAlert.classList.add('alert-success');
+            statusAlert.classList.remove('border-info');
+            statusAlert.classList.add('border-success');
+
+            statusMessage.classList.add('text-success');
+            statusMessage.innerHTML = '✓ Available';
+
+            // Keep original firewall instructions
+            statusAlert.querySelector('p.mb-0').innerHTML = 'To disable Phoenix Code AI in your campus, firewall <code>ai.phcode.dev</code>.';
+        })
+        .catch(error => {
+            document.getElementById('checkingStatus').style.display = 'none';
+            document.getElementById('statusResult').style.display = 'block';
+
+            // Show AI is blocked
+            const statusAlert = document.getElementById('aiStatusAlert');
+            const statusMessage = document.getElementById('statusMessage');
+
+            statusAlert.classList.remove('alert-info');
+            statusAlert.classList.add('alert-danger');
+            statusAlert.classList.remove('border-info');
+            statusAlert.classList.add('border-danger');
+
+            statusMessage.classList.add('text-danger');
+            statusMessage.innerHTML = '✗ Blocked';
+
+            // Show blocked message
+            statusAlert.querySelector('p.mb-0').innerHTML = 'The domain <code>ai.phcode.dev</code> is unreachable and appears to be blocked by firewall.';
+        });
+    </script>
 </div>
