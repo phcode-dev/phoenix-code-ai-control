@@ -10,10 +10,8 @@
  **/
 console.log("hello world node extension");
 
-const sharp = require("sharp");
-
 const extnNodeConnector = global.createNodeConnector(
-    "your-extension-id-1",
+    "github-phcode-dev-phoenix-code-ai-control",
     exports
 );
 

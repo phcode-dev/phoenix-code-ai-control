@@ -9,7 +9,5 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "jquery": "^3.7.1",
-    "sharp": "^0.33.3"
   }
 }

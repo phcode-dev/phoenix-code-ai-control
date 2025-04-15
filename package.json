@@ -1,17 +1,17 @@
 {
-    "title": "Name of the extension",
-    "name": "github-<owner>-<repo>",
-    "description": "A sample extension.",
+    "title": "Phoenix AI Control",
+    "name": "github-phcode-dev-phoenix-code-ai-control",
+    "description": "Control AI features in Phoenix Code",
     "version": "0.0.1",
     "license": "MIT",
-    "author": "your name (https://github.com/<your github id>)",
-    "homepage": "<project web page url or this github repo url if no website available>",
+    "author": "Phoenix Code (https://github.com/phcode-dev)",
+    "homepage": "https://github.com/phcode-dev/phoenix-code-ai-control",
     "engines": {
-        "brackets": ">=2.0.0"
+        "brackets": ">=3.0.0"
     },
-    "categories": "demo",
+    "categories": "AI",
     "keywords": [
-        "phcode", "extension", "demo"
+        "phcode", "AI", "control"
     ],
     "files": [
         "main.js"

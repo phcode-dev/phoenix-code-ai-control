@@ -88,7 +88,7 @@ define(function (require, exports, module) {
 
         if (Phoenix.isNativeApp) {
             nodeConnector = NodeConnector.createNodeConnector(
-                "your-extension-id-1",
+                "github-phcode-dev-phoenix-code-ai-control",
                 exports
             );
             // you can also execute nodejs code in dekstop builds
