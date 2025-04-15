@@ -25,20 +25,20 @@ Configure AI controls by running the appropriate script for your platform:
 
 Download and run the appropriate script for your platform:
 
-- [Windows PowerShell Script](https://download.phcode.dev/ai-control/setup_phoenix_ai_control_win.ps1)
+- [Windows Batch Script](https://download.phcode.dev/ai-control/setup_phoenix_ai_control_win.bat)
 - [macOS Script](https://download.phcode.dev/ai-control/setup_phoenix_ai_control_mac.sh)
 - [Linux Script](https://download.phcode.dev/ai-control/setup_phoenix_ai_control_linux.sh)
 
 #### Windows Installation
 
-1. Download the Windows PowerShell script:
-   - `setup_phoenix_ai_control_win.ps1`
-2. Open PowerShell as Administrator:
-   - Press Win+X and select "Windows PowerShell (Admin)"
+1. Download the Windows Batch script:
+   - `setup_phoenix_ai_control_win.bat`
+2. Open Command Prompt as Administrator:
+   - Press Win+X and select "Command Prompt (Admin)"
    - Navigate to the download location using `cd` command
 3. Execute with parameters, for example:
    ```
-   .\setup_phoenix_ai_control_win.ps1 --managedByEmail school.admin@example.edu --disableAI
+   setup_phoenix_ai_control_win.bat --managedByEmail school.admin@example.edu --disableAI
    ```
    Note: The `--managedByEmail` parameter is optional but recommended
 
@@ -72,7 +72,7 @@ All installation scripts support the same command-line options:
 |--------|-------------|
 | `--help` | Display usage information and help text |
 | `--managedByEmail <email>` | Optional but recommended. Admin email who manages AI policy. Can be used in your Phoenix managed AI dashboard to selectively enable features and manage usage quotas |
-| `--allowedUsers <user1,user2,...>` | Comma-separated list of usernames allowed to use AI even when disabled for others |
+| `--allowedUsers "<user1,user2,...>"` | Comma-separated list of usernames allowed to use AI even when disabled for others. **IMPORTANT:** Always enclose the list in quotes to prevent parsing errors |
 | `--disableAI` | If present, AI will be disabled by default for all users except those specified in `allowedUsers` |
 
 ### Example Usage
@@ -81,14 +81,16 @@ All installation scripts support the same command-line options:
 # Enable AI with administrative contact
 sudo ./setup_phoenix_ai_control_linux.sh --managedByEmail school.admin@example.edu
 
-# Enable AI for specific users only
-sudo ./setup_phoenix_ai_control_linux.sh --allowedUsers alice,bob --disableAI
+# Enable AI for specific users only (IMPORTANT: always use quotes for multiple users)
+sudo ./setup_phoenix_ai_control_linux.sh --allowedUsers "alice,bob" --disableAI
 
 # Complete setup with all options
-sudo ./setup_phoenix_ai_control_linux.sh --managedByEmail school.admin@example.edu --allowedUsers alice,bob --disableAI
+sudo ./setup_phoenix_ai_control_linux.sh --managedByEmail school.admin@example.edu --allowedUsers "alice,bob" --disableAI
 ```
 
 > **Note:** Always replace `school.admin@example.edu` with an actual administrator email address. The scripts will detect and reject placeholder email addresses.
+
+> **IMPORTANT:** When specifying multiple users with `--allowedUsers`, always enclose the comma-separated list in quotes (`"alice,bob"`) to prevent parsing errors on all platforms.
 
 ### Configuration File Locations
 
