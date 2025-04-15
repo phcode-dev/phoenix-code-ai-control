@@ -1,13 +1,13 @@
 {
-  "name": "node-extension-component",
+  "name": "phoenix-ai-control-node",
   "version": "1.0.0",
-  "description": "",
+  "description": "Node component for Phoenix AI Control extension",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Phoenix Code",
+  "license": "MIT",
   "dependencies": {
   }
 }

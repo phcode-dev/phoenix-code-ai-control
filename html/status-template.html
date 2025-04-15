@@ -1,0 +1,48 @@
+<div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">
+    <h3>Phoenix AI Control Status</h3>
+
+    <div style="background-color: #f9f9f9; border-left: 4px solid {{statusColor}}; padding: 16px; margin: 16px 0; border-radius: 4px;">
+        <p style="font-size: 16px;"><strong>AI Status:</strong> <span style="color: {{statusColor}};">{{statusIcon}} {{statusText}}</span></p>
+        <p>{{status.message}}</p>
+    </div>
+
+    {{#showConfigDetails}}
+    <div style="margin: 16px 0;">
+        <h4>Configuration Details</h4>
+        <table style="width: 100%; border-collapse: collapse;">
+            <tr>
+                <td style="padding: 8px; border-bottom: 1px solid #eee;"><strong>Platform:</strong></td>
+                <td style="padding: 8px; border-bottom: 1px solid #eee;">{{status.platform}}</td>
+            </tr>
+            <tr>
+                <td style="padding: 8px; border-bottom: 1px solid #eee;"><strong>Configuration File:</strong></td>
+                <td style="padding: 8px; border-bottom: 1px solid #eee; word-break: break-all;">{{status.configPath}}</td>
+            </tr>
+            <tr>
+                <td style="padding: 8px; border-bottom: 1px solid #eee;"><strong>Current User:</strong></td>
+                <td style="padding: 8px; border-bottom: 1px solid #eee;">{{status.currentUser}}</td>
+            </tr>
+            <tr>
+                <td style="padding: 8px; border-bottom: 1px solid #eee;"><strong>Managed By:</strong></td>
+                <td style="padding: 8px; border-bottom: 1px solid #eee;">{{status.managedBy}}</td>
+            </tr>
+            {{#hasAllowedUsers}}
+            <tr>
+                <td style="padding: 8px; border-bottom: 1px solid #eee;"><strong>Allowed Users:</strong></td>
+                <td style="padding: 8px; border-bottom: 1px solid #eee;">{{allowedUsersList}}</td>
+            </tr>
+            {{/hasAllowedUsers}}
+        </table>
+    </div>
+    {{/showConfigDetails}}
+
+    <div style="margin-top: 24px;">
+        <h4>Need to Control AI in Your Educational Institution?</h4>
+        <p>Visit <a href="https://docs.phcode.dev/docs/control-ai" target="_blank">https://docs.phcode.dev/docs/control-ai</a> for documentation on how to:</p>
+        <ul>
+            <li>Disable AI features by default</li>
+            <li>Allow specific users to access AI</li>
+            <li>Set up managed AI deployments</li>
+        </ul>
+    </div>
+</div>

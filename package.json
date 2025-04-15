@@ -1,7 +1,7 @@
 {
     "title": "Phoenix AI Control",
     "name": "github-phcode-dev-phoenix-code-ai-control",
-    "description": "Control AI features in Phoenix Code",
+    "description": "Verify and control AI features in Phoenix Code for educational institutions",
     "version": "0.0.1",
     "license": "MIT",
     "author": "Phoenix Code (https://github.com/phcode-dev)",
@@ -11,13 +11,16 @@
     },
     "categories": "AI",
     "keywords": [
-        "phcode", "AI", "control"
+        "phcode", "AI", "control", "education", "institution", "verification"
     ],
     "files": [
-        "main.js"
+        "main.js",
+        "html/browser-message.html",
+        "html/status-template.html",
+        "html/error-template.html"
     ],
     "nodeConfig": {
-        "nodeIsRequired": false,
+        "nodeIsRequired": true,
         "main": "node/index.js",
         "npmInstall": "node/"
     }
