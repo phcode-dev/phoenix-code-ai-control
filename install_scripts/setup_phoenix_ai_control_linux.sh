@@ -20,13 +20,22 @@ show_help() {
     echo "Help:"
     echo "    ./setup_phoenix_ai_control_linux.sh --help"
     echo
+    echo "NOTE: sudo privileges are required to make changes,"
+    echo "      but not to view this help information."
+    echo
     exit 1
 }
 
+# Check for help flags first, before sudo check
+if [ "$1" == "--help" ]; then
+    show_help
+fi
+
 # Check if script is run with sudo/as root
 if [ "$EUID" -ne 0 ]; then
-    echo "This script must be run with sudo privileges."
+    echo "This script must be run with sudo privileges to make changes."
     echo "Please run: sudo $0 $*"
+    echo "Run with --help for usage information."
     exit 1
 fi
 
