@@ -91,7 +91,7 @@ async function getAIControlStatus() {
                     exists: true,
                     isConfigured: true,
                     isEnabled: true,
-                    message: `AI is enabled for your user (${currentUser}) but disabled for others.`,
+                    message: `AI is enabled for user (${currentUser}) but disabled for others.`,
                     managedBy: config.managedByEmail || 'Not specified',
                     allowedUsers: config.allowedUsers || [],
                     currentUser: currentUser,
