@@ -132,7 +132,5 @@ echo "----------------------"
 cat "$CONFIG_FILE"
 echo "----------------------"
 echo
-echo "Permissions set to allow only root to write, but everyone to read."
-echo
 echo "NOTE: Running this script again will overwrite any previous configuration."
 echo "      Only the latest settings will be preserved."
