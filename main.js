@@ -40,9 +40,6 @@ define(function (require, exports, module) {
 
                 // Prepare view model for Mustache
                 const viewModel = {
-                    statusColor: status.isEnabled ? "#4caf50" : "#f44336", // Green if enabled, red if disabled
-                    statusIcon: status.isEnabled ? "✓" : "✗",
-                    statusText: status.isEnabled ? "Enabled" : "Disabled",
                     status: status,
                     showConfigDetails: status.exists && status.isConfigured,
                     hasAllowedUsers: status.allowedUsers && status.allowedUsers.length > 0,
