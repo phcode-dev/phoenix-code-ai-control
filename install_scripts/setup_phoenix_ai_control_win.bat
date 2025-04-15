@@ -74,6 +74,9 @@ echo }
 echo.
 echo Phoenix AI control config written to:
 echo %CONFIG_FILE%
+echo.
+echo NOTE: Running this script again will overwrite any previous configuration.
+echo       Only the latest settings will be preserved.
 pause
 exit /b 0
 :help
@@ -99,6 +102,10 @@ echo.
 echo Help:
 echo     setup_phoenix_ai_control_win.bat --help
 echo     setup_phoenix_ai_control_win.bat /?
+echo.
+echo Important:
+echo     Running this script will overwrite any previous configuration.
+echo     Only the latest settings will be preserved.
 echo.
 
 echo.

@@ -24,6 +24,10 @@ show_help() {
     echo "Help:"
     echo "    ./setup_phoenix_ai_control_linux.sh --help"
     echo
+    echo "Important:"
+    echo "    Running this script will overwrite any previous configuration."
+    echo "    Only the latest settings will be preserved."
+    echo
 
     echo
     exit 1
@@ -124,3 +128,6 @@ echo "Phoenix AI control config written to:"
 echo "$CONFIG_FILE"
 echo
 echo "Permissions set to allow only root to write, but everyone to read."
+echo
+echo "NOTE: Running this script again will overwrite any previous configuration."
+echo "      Only the latest settings will be preserved."
