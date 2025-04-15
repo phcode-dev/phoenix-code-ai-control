@@ -1,21 +1,35 @@
 <div class="container-fluid">
-    <h3 class="mb-3">Phoenix AI Control Status</h3>
+    <style>
+        .alert.alert-success {
+            text-shadow: none;
+            background-color: #dff0d8;
+            border: none;
+        }
+        .dark .alert.alert-success {
+            text-shadow: none;
+            background-color: #1e3a1e; /* Darker background for better contrast */
+            border: none;
+            color: #e2e2e2; /* Lighter text for better contrast */
+        }
+        .dark .text-success {
+            color: #4caf50 !important; /* Brighter green in dark mode */
+        }
+        .dark .border-success {
+            border-color: #4caf50 !important; /* Match the text color */
+        }
 
+    </style>
     {{#status.isEnabled}}
     <div class="alert alert-success border-start border-success border-4 mb-4">
         <p class="fs-5 mb-2"><strong>AI Status:</strong> <span class="text-success">✓ Enabled</span></p>
         <p class="mb-0">{{status.message}}</p>
     </div>
-    {{/status.isEnabled}}
-
-    {{^status.isEnabled}}
+    {{/status.isEnabled}} {{^status.isEnabled}}
     <div class="alert alert-danger border-start border-danger border-4 mb-4">
         <p class="fs-5 mb-2"><strong>AI Status:</strong> <span class="text-danger">✗ Disabled</span></p>
         <p class="mb-0">{{status.message}}</p>
     </div>
-    {{/status.isEnabled}}
-
-    {{#showConfigDetails}}
+    {{/status.isEnabled}} {{#showConfigDetails}}
     <div class="mb-4">
         <h4 class="mb-3">Configuration Details</h4>
         <table class="table table-bordered table-striped">
@@ -49,7 +63,13 @@
 
     <div class="mt-4">
         <h4 class="mb-3">Need to Control AI in Your Educational Institution?</h4>
-        <p>Visit <a href="https://docs.phcode.dev/docs/control-ai" target="_blank" class="link-primary">https://docs.phcode.dev/docs/control-ai</a> for documentation on how to:</p>
+        <p>
+            Visit
+            <a href="https://docs.phcode.dev/docs/control-ai" target="_blank" class="link-primary"
+                >https://docs.phcode.dev/docs/control-ai</a
+            >
+            for documentation on how to:
+        </p>
         <ul class="list-group list-group-flush mb-3">
             <li class="list-group-item">Disable AI features by default</li>
             <li class="list-group-item">Allow specific users to access AI</li>

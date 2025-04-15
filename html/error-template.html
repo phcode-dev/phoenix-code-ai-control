@@ -1,4 +1,22 @@
 <div class="container-fluid">
+    <style>
+        /* Dark mode styling for error message */
+        .dark .alert.alert-danger {
+            background-color: #3a1e1e; /* Darker red background */
+            color: #e2e2e2; /* Lighter text */
+            border: none;
+        }
+        .dark .border-danger {
+            border-color: #f44336 !important;
+        }
+        .dark code {
+            color: #f89898; /* Lighter red for error code */
+            background-color: rgba(0, 0, 0, 0.2);
+        }
+        .dark .link-primary {
+            color: #5c9eff !important;
+        }
+    </style>
     <h3 class="mb-3">Error Checking AI Control Status</h3>
     <div class="alert alert-danger border-start border-danger border-4 mb-4">
         <p class="mb-2">An error occurred while checking AI control configuration:</p>
