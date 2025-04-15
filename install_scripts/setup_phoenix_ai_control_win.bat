@@ -17,6 +17,7 @@ if %errorlevel% neq 0 (
 :: Parse args
 set "managedByEmail="
 set "allowedUsers="
+set "disableAI=false"
 :parse_args
 if "%~1"=="" goto :continue
 if "%~1"=="--managedByEmail" (
@@ -28,6 +29,11 @@ if "%~1"=="--managedByEmail" (
 if "%~1"=="--allowedUsers" (
     shift
     set "allowedUsers=%~1"
+    shift
+    goto :parse_args
+)
+if "%~1"=="--disableAI" (
+    set "disableAI=true"
     shift
     goto :parse_args
 )
@@ -44,7 +50,7 @@ if not exist "%TARGET_DIR%" (
 :: Start writing JSON
 (
 echo {
-echo     "disableAI": true
+echo     "disableAI": %disableAI%
 :: Conditionally write managedByEmail
 if defined managedByEmail (
     echo     ,"managedByEmail": "%managedByEmail%"
@@ -78,19 +84,22 @@ echo Usage:
 echo     setup_phoenix_ai_control_win.bat [--managedByEmail <email>] [--allowedUsers <user1,user2,...>]
 echo.
 echo Options:
-echo     --managedByEmail   Optional. Admin email who manages AI policy.
+echo     --managedByEmail   Optional. Admin email who manages AI policy. Can be used in your
+echo                        Phoenix managed AI dashboard to selectively enable features and
+echo                        manage usage quotas.
 echo     --allowedUsers     Optional. Comma-separated list of Windows usernames allowed to use AI.
+echo     --disableAI        Optional. If present, AI will be disabled by default.
+echo                        If not present, AI will be enabled.
 echo.
 echo Examples:
 echo     setup_phoenix_ai_control_win.bat --managedByEmail admin@example.com
 echo     setup_phoenix_ai_control_win.bat --allowedUsers Alice,Bob
-echo     setup_phoenix_ai_control_win.bat --managedByEmail admin@example.com --allowedUsers Alice,Bob
+echo     setup_phoenix_ai_control_win.bat --managedByEmail admin@example.com --allowedUsers Alice,Bob --disableAI
 echo.
 echo Help:
 echo     setup_phoenix_ai_control_win.bat --help
 echo     setup_phoenix_ai_control_win.bat /?
 echo.
-echo NOTE: Administrator privileges are required to make changes,
-echo       but not to view this help information.
+
 echo.
 exit /b 1

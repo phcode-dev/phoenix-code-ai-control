@@ -9,19 +9,22 @@ show_help() {
     echo "    sudo ./setup_phoenix_ai_control_linux.sh [--managedByEmail <email>] [--allowedUsers <user1,user2,...>]"
     echo
     echo "Options:"
-    echo "    --managedByEmail   Optional. Admin email who manages AI policy."
+    echo "    --managedByEmail   Optional. Admin email who manages AI policy. Can be used in your"
+    echo "                        Phoenix managed AI dashboard to selectively enable features and"
+    echo "                        manage usage quotas."
     echo "    --allowedUsers     Optional. Comma-separated list of Linux usernames allowed to use AI."
+    echo "    --disableAI        Optional. If present, AI will be disabled by default."
+    echo "                        If not present, AI will be enabled."
     echo
     echo "Examples:"
     echo "    sudo ./setup_phoenix_ai_control_linux.sh --managedByEmail admin@example.com"
     echo "    sudo ./setup_phoenix_ai_control_linux.sh --allowedUsers alice,bob"
-    echo "    sudo ./setup_phoenix_ai_control_linux.sh --managedByEmail admin@example.com --allowedUsers alice,bob"
+    echo "    sudo ./setup_phoenix_ai_control_linux.sh --managedByEmail admin@example.com --allowedUsers alice,bob --disableAI"
     echo
     echo "Help:"
     echo "    ./setup_phoenix_ai_control_linux.sh --help"
     echo
-    echo "NOTE: sudo privileges are required to make changes,"
-    echo "      but not to view this help information."
+
     echo
     exit 1
 }
@@ -42,6 +45,7 @@ fi
 # Parse arguments
 managedByEmail=""
 allowedUsers=""
+disableAI=false
 
 while [[ $# -gt 0 ]]; do
     key="$1"
@@ -56,6 +60,10 @@ while [[ $# -gt 0 ]]; do
         --allowedUsers)
             allowedUsers="$2"
             shift 2
+            ;;
+        --disableAI)
+            disableAI=true
+            shift
             ;;
         *)
             echo "Unknown option: $1"
@@ -75,7 +83,7 @@ fi
 
 # Start creating the JSON content
 json_content='{'
-json_content+='"disableAI": true'
+json_content+='"disableAI": '$disableAI''
 
 # Add managedByEmail if specified
 if [ -n "$managedByEmail" ]; then
