@@ -32,7 +32,9 @@ Download and run the appropriate script for your platform:
 #### Windows Installation
 
 1. Download the Windows script
-2. Right-click and select "Run as administrator"
+2. Open Command Prompt as Administrator:
+   - Press Win+X and select "Command Prompt (Admin)" or "Windows PowerShell (Admin)"
+   - Navigate to the download location using `cd` command
 3. Execute with required parameters, for example:
    ```
    setup_phoenix_ai_control_win.bat --managedByEmail school.admin@example.edu --disableAI
