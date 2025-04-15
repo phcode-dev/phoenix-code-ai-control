@@ -25,19 +25,20 @@ Configure AI controls by running the appropriate script for your platform:
 
 Download and run the appropriate script for your platform:
 
-- [Windows Script](https://download.phcode.dev/ai-control/setup_phoenix_ai_control_win.bat)
+- [Windows PowerShell Script](https://download.phcode.dev/ai-control/setup_phoenix_ai_control_win.ps1)
 - [macOS Script](https://download.phcode.dev/ai-control/setup_phoenix_ai_control_mac.sh)
 - [Linux Script](https://download.phcode.dev/ai-control/setup_phoenix_ai_control_linux.sh)
 
 #### Windows Installation
 
-1. Download the Windows script
-2. Open Command Prompt as Administrator:
-   - Press Win+X and select "Command Prompt (Admin)" or "Windows PowerShell (Admin)"
+1. Download the Windows PowerShell script:
+   - `setup_phoenix_ai_control_win.ps1`
+2. Open PowerShell as Administrator:
+   - Press Win+X and select "Windows PowerShell (Admin)"
    - Navigate to the download location using `cd` command
 3. Execute with parameters, for example:
    ```
-   setup_phoenix_ai_control_win.bat --managedByEmail school.admin@example.edu --disableAI
+   .\setup_phoenix_ai_control_win.ps1 --managedByEmail school.admin@example.edu --disableAI
    ```
    Note: The `--managedByEmail` parameter is optional but recommended
 
