@@ -29,11 +29,11 @@ Configure AI controls by running the appropriate script for your platform:
 
 > **Note:** The following scripts configure system-wide settings and do not require Phoenix Code to be installed on the administrator's machine.
 
-Download and run the appropriate script for your platform:
+Download and run the appropriate script for your platform [Download from this link.](https://github.com/phcode-dev/phoenix-code-ai-control/releases/latest/)
 
-- [Windows Batch Script](https://download.phcode.dev/ai-control/setup_phoenix_ai_control_win.bat)
-- [macOS Script](https://download.phcode.dev/ai-control/setup_phoenix_ai_control_mac.sh)
-- [Linux Script](https://download.phcode.dev/ai-control/setup_phoenix_ai_control_linux.sh)
+- For Windows: `setup_phoenix_ai_control_win.bat`
+- For macOS: `setup_phoenix_ai_control_mac.sh`
+- For Linux: `setup_phoenix_ai_control_linux.sh`
 
 #### Windows Installation
 
