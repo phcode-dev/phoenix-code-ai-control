@@ -1,6 +1,12 @@
 # Phoenix Code AI Control
 
-🔐 Control AI features in Phoenix Code with deployment scripts for Windows, macOS, and Linux — made for schools and enterprise setups.
+🔐 Disable/Control AI features in Phoenix Code with deployment scripts for Windows, macOS, and Linux — made for schools and enterprise setups.
+
+## AI Control Extensiosn in Phoenix Code
+### When AI is disabled
+![Image](https://github.com/user-attachments/assets/6a066f62-a079-4ec9-bb93-9165fbf9bc99)
+### AI is enabled for selected user, but disabled for others
+![Image](https://github.com/user-attachments/assets/5f230107-854a-437f-952c-2712188f8ef2)
 
 ## Overview
 
