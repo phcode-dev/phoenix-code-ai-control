@@ -81,7 +81,41 @@ All installation scripts support the same command-line options:
 | `--allowedUsers "<user1,user2,...>"` | Comma-separated list of usernames allowed to use AI even when disabled for others. **IMPORTANT:** Always enclose the list in quotes to prevent parsing errors |
 | `--disableAI` | If present, AI will be disabled by default for all users except those specified in `allowedUsers` |
 
-### Example Usage
+## Disabling and Enabling AI
+
+Here are quick examples for disabling and enabling AI on different platforms:
+
+### Disabling AI
+
+To disable AI for all users:
+
+```bash
+# Windows - in cmd(run as administrator)
+setup_phoenix_ai_control_win.bat --disableAI --managedByEmail admin@example.com
+
+# macOS - Terminal
+sudo ./setup_phoenix_ai_control_mac.sh --disableAI --managedByEmail admin@example.com
+
+# Linux - Bash
+sudo ./setup_phoenix_ai_control_linux.sh --disableAI --managedByEmail admin@example.com
+```
+
+### Enabling AI
+
+To enable AI for all users:
+
+```bash
+# Windows - in cmd(run as administrator)
+setup_phoenix_ai_control_win.bat --managedByEmail admin@example.com
+
+# macOS - Terminal
+sudo ./setup_phoenix_ai_control_mac.sh --managedByEmail admin@example.com
+
+# Linux - Bash
+sudo ./setup_phoenix_ai_control_linux.sh --managedByEmail admin@example.com
+```
+
+### Additional Examples
 
 ```bash
 # Enable AI with administrative contact
@@ -164,6 +198,10 @@ The browser version of Phoenix Code will automatically detect if the domain is u
 
 ## FAQ
 
+### When will AI be enabled in Phoenix Code?
+
+Phoenix Code AI will be rolled out after May 20, 2025. Educational institutions should configure AI controls campus-wide before this date.
+
 ### How do I know if AI control is working?
 
 In both the desktop and browser versions, go to View → AI Control Status to see a detailed report.
@@ -184,6 +222,24 @@ No, all other features of Phoenix Code will continue to work normally. Only the 
 
 Simply run the installation script again with the new parameters. The script will overwrite the existing configuration file with your new settings.
 
+### How do I re-enable AI after it has been disabled?
+
+To re-enable AI that was previously disabled:
+
+1. Run the installation script again without the `--disableAI` flag:
+   ```bash
+   # Windows - in cmd(run as administrator)
+   setup_phoenix_ai_control_win.bat --managedByEmail school.admin@example.edu
+
+   # macOS
+   sudo ./setup_phoenix_ai_control_mac.sh --managedByEmail school.admin@example.edu
+
+   # Linux
+   sudo ./setup_phoenix_ai_control_linux.sh --managedByEmail school.admin@example.edu
+   ```
+
+2. For browser version, remove any firewall rules blocking `ai.phcode.dev`
+
 ### What's the difference between browser and desktop control?
 
 - **Browser Version**: Only supports network-level blocking of `ai.phcode.dev` through your firewall
@@ -197,6 +253,17 @@ Simply run the installation script again with the new parameters. The script wil
 ### How can I verify that the firewall is properly blocking AI access?
 
 In the browser version, use the View → AI Control Status option which will attempt to connect to the AI service and report whether it's accessible or blocked.
+
+### Can I disable AI for some users but enable it for others?
+
+Yes, use the `--disableAI` flag to disable AI globally, then use the `--allowedUsers` parameter to specify which users should still have access. Example:
+```bash
+sudo ./setup_phoenix_ai_control_linux.sh --disableAI --allowedUsers "teacher1,admin2"
+```
+
+### Is there a way to monitor AI usage in my organization?
+
+When you set the `--managedByEmail` parameter, this information is used for administration purposes. Future versions will provide a dashboard for administrators to monitor and manage AI usage across their organization.
 
 ## Support
 
