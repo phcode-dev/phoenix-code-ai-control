@@ -23,8 +23,21 @@
         .dark .table-bordered th {
             border-color: #333 !important;
         }
-
+        .alert-notification {
+            background-color: #e7f3fe;
+            border-color: #2196F3;
+            color: black;
+        }
+        .dark .alert-notification {
+            background-color: #0d2a3f;
+            border-color: #2196F3;
+            color: #ccc;
+        }
     </style>
+
+    <div class="alert alert-notification border-start border-info border-4 mb-4">
+        <p class="mb-0"><strong>Important Notice:</strong> Phoenix Code AI will be rolled out after May 20, 2025. Educational institutions should follow <a href="https://docs.phcode.dev/docs/control-ai" target="_blank" class="link-primary">this guide</a> to disable/configure AI campus-wide before this date.</p>
+    </div>
     {{#status.isEnabled}}
     <div class="alert alert-success border-start border-success border-4 mb-4">
         <p class="fs-5 mb-2"><strong>AI Status:</strong> <span class="text-success">✓ Enabled</span></p>

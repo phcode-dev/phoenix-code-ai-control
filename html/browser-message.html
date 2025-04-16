@@ -54,6 +54,25 @@
             color: #5c9eff !important;
         }
 
+        .alert-notification {
+            background-color: #e7f3fe;
+            border-color: #2196F3;
+            color: black;
+        }
+        .dark .alert-notification {
+            background-color: #0d2a3f;
+            border-color: #2196F3;
+            color: #ccc;
+        }
+
+        .info {
+            color: black;
+        }
+
+        .dark .info {
+            color: white;
+        }
+
         /* Status display control */
         #checkingStatus {
             display: block;
@@ -62,6 +81,10 @@
             display: none;
         }
     </style>
+
+    <div class="alert alert-notification border-start border-info border-4 mb-4">
+        <p class="mb-0"><strong>Important Notice:</strong> Phoenix Code AI will be rolled out after May 20, 2025. Educational institutions should follow <a href="https://docs.phcode.dev/docs/control-ai" target="_blank" class="link-primary">this guide</a> to disable/configure AI campus-wide before this date.</p>
+    </div>
 
     <div id="checkingStatus" class="alert alert-secondary border-start border-secondary border-4 mb-4">
         <p class="fs-5 mb-2"><strong>AI Status:</strong> Checking if AI is disabled...</p>
@@ -77,7 +100,7 @@
 
     <div class="mt-4">
         <h4 class="mb-3">Need to Restrict Phoenix Code AI at School or Work?</h4>
-        <p>
+        <p class="info">
             Visit
             <a href="https://docs.phcode.dev/docs/control-ai" target="_blank" class="link-primary">https://docs.phcode.dev/docs/control-ai</a>
             for documentation on how to:
