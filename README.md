@@ -91,13 +91,13 @@ To disable AI for all users:
 
 ```bash
 # Windows - in cmd(run as administrator)
-setup_phoenix_ai_control_win.bat --disableAI --managedByEmail admin@example.com
+setup_phoenix_ai_control_win.bat --disableAI --managedByEmail school.admin@example.edu
 
 # macOS - Terminal
-sudo ./setup_phoenix_ai_control_mac.sh --disableAI --managedByEmail admin@example.com
+sudo ./setup_phoenix_ai_control_mac.sh --disableAI --managedByEmail school.admin@example.edu
 
 # Linux - Bash
-sudo ./setup_phoenix_ai_control_linux.sh --disableAI --managedByEmail admin@example.com
+sudo ./setup_phoenix_ai_control_linux.sh --disableAI --managedByEmail school.admin@example.edu
 ```
 
 ### Enabling AI
@@ -106,20 +106,20 @@ To enable AI for all users:
 
 ```bash
 # Windows - in cmd(run as administrator)
-setup_phoenix_ai_control_win.bat --managedByEmail admin@example.com
+setup_phoenix_ai_control_win.bat --managedByEmail school.admin@example.edu
 
 # macOS - Terminal
-sudo ./setup_phoenix_ai_control_mac.sh --managedByEmail admin@example.com
+sudo ./setup_phoenix_ai_control_mac.sh --managedByEmail school.admin@example.edu
 
 # Linux - Bash
-sudo ./setup_phoenix_ai_control_linux.sh --managedByEmail admin@example.com
+sudo ./setup_phoenix_ai_control_linux.sh --managedByEmail school.admin@example.edu
 ```
 
 ### Additional Examples
 
 ```bash
-# Enable AI with administrative contact
-sudo ./setup_phoenix_ai_control_linux.sh --managedByEmail school.admin@example.edu
+# Enable AI without administrative contact
+sudo ./setup_phoenix_ai_control_linux.sh
 
 # Enable AI for specific users only (IMPORTANT: always use quotes for multiple users)
 sudo ./setup_phoenix_ai_control_linux.sh --allowedUsers "alice,bob" --disableAI
