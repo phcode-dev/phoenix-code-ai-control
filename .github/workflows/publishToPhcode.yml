@@ -11,7 +11,9 @@ jobs:
     steps:
       - name: Dump GitHub context
         id: github_context_step
-        run: echo '${{ toJSON(github) }}'
+        env:
+          GITHUB_CONTEXT: ${{ toJSON(github) }}
+        run: echo "$GITHUB_CONTEXT"
       - name: release details
         run: |
           echo "$GITHUB_REF repo=${{github.event.repository.full_name}}"
