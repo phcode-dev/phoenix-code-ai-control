@@ -167,13 +167,7 @@ To verify the status of AI controls on end-user machines, the Phoenix Code AI Co
 
 ### Checking Status in Browser Version
 
-1. Open Phoenix Code in your web browser
-2. Install the extension (File → Extension Manager → "Phoenix Code AI Control")
-3. Navigate to View → AI Control Status
-4. The browser will check if `ai.phcode.dev` is accessible:
-   - First shows "Checking if AI is disabled..."
-   - Then displays whether AI is available or blocked
-   - Provides information on firewall configuration
+AI is not currently available in the browser version of Phoenix Code, so there's nothing to check or restrict there yet. AI Control status checks currently only apply to the desktop app.
 
 ## Configuration Options
 
@@ -187,24 +181,19 @@ For desktop installations of Phoenix Code, we strongly recommend using the insta
 
 Only administrative users can modify this configuration.
 
-### Network Blocking (For Browser Version at https://phcode.dev)
+### Browser Version (at https://phcode.dev)
 
-For schools using the browser version of Phoenix Code, network-level blocking is the recommended approach:
-
-1. Block access to: `ai.phcode.dev`
-2. Add this domain to your firewall or content filtering system
-
-The browser version of Phoenix Code will automatically detect if the domain is unreachable and display appropriate status messages.
+AI features are not currently available in the browser version of Phoenix Code, so no configuration or network blocking is needed there. This section will be updated once AI ships in the browser version.
 
 ## FAQ
 
 ### When will AI be enabled in Phoenix Code?
 
-AI is available in Phoenix Code 5.1 and later. Educational institutions should configure AI controls campus-wide before deploying Phoenix Code.
+AI is available in the Phoenix Code desktop app, version 5.1 and later. It is not yet available in the browser version. Educational institutions should configure AI controls campus-wide before deploying the desktop app.
 
 ### How do I know if AI control is working?
 
-In both the desktop and browser versions, go to View → AI Control Status to see a detailed report.
+In the desktop version, go to View → AI Control Status to see a detailed report. The browser version doesn't need this check yet, since it doesn't ship AI features.
 
 ### Can I allow specific users to access AI features?
 
@@ -238,21 +227,15 @@ To re-enable AI that was previously disabled:
    sudo ./setup_phoenix_ai_control_linux.sh --managedByEmail school.admin@example.edu
    ```
 
-2. For browser version, remove any firewall rules blocking `ai.phcode.dev`
-
 ### What's the difference between browser and desktop control?
 
-- **Browser Version**: Only supports network-level blocking of `ai.phcode.dev` through your firewall
 - **Desktop Version**: Provides comprehensive control through configuration files with user-specific permissions
+- **Browser Version**: Not applicable yet — AI features aren't shipped in the browser version, so there's nothing to control there.
 
 ### Does this completely prevent AI usage?
 
 - **Desktop Version**: Yes, the control is comprehensive when properly configured using the installation scripts
-- **Browser Version**: Only if you implement network-level blocking of the `ai.phcode.dev` domain
-
-### How can I verify that the firewall is properly blocking AI access?
-
-In the browser version, use the View → AI Control Status option which will attempt to connect to the AI service and report whether it's accessible or blocked.
+- **Browser Version**: N/A — AI isn't available in the browser version, so there's nothing to prevent.
 
 ### Can I disable AI for some users but enable it for others?
 

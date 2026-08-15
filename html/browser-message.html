@@ -1,24 +1,6 @@
 <div class="container-fluid">
     <style>
         /* Status styles */
-        .alert.alert-success {
-            text-shadow: none;
-            background-color: #dff0d8;
-            border: none;
-        }
-        .dark .alert.alert-success {
-            text-shadow: none;
-            background-color: #1e3a1e; /* Darker background for better contrast */
-            border: none;
-            color: #ccc; /* Lighter text for better contrast */
-        }
-        .dark .text-success {
-            color: #4caf50 !important; /* Brighter green in dark mode */
-        }
-        .dark .border-success {
-            border-color: #4caf50 !important; /* Match the text color */
-        }
-
         .alert.alert-info {
             text-shadow: none;
             background-color: #d1ecf1;
@@ -72,30 +54,15 @@
         .dark .info {
             color: white;
         }
-
-        /* Status display control */
-        #checkingStatus {
-            display: block;
-        }
-        #statusResult {
-            display: none;
-        }
     </style>
 
     <div class="alert alert-notification border-start border-info border-4 mb-4">
-        <p class="mb-0"><strong>Important Notice:</strong> AI is available in Phoenix Code 5.1 and later. Educational institutions should follow <a href="https://docs.phcode.dev/docs/control-ai" target="_blank" class="link-primary">this guide</a> to disable/configure AI campus-wide before deploying Phoenix Code.</p>
+        <p class="mb-0"><strong>Important Notice:</strong> AI is available in the Phoenix Code desktop app (5.1 and later). Educational institutions should follow <a href="https://docs.phcode.dev/docs/control-ai" target="_blank" class="link-primary">this guide</a> to disable/configure AI campus-wide before deploying Phoenix Code.</p>
     </div>
 
-    <div id="checkingStatus" class="alert alert-secondary border-start border-secondary border-4 mb-4">
-        <p class="fs-5 mb-2"><strong>AI Status:</strong> Checking if AI is disabled...</p>
-    </div>
-
-    <div id="statusResult">
-        <div id="aiStatusAlert" class="alert alert-info border-start border-info border-4 mb-4">
-            <p class="fs-5 mb-2"><strong>AI Status:</strong> <span id="statusMessage">Unknown</span></p>
-            <p class="mb-0">To disable Phoenix Code AI in your campus, firewall <code>ai.phcode.dev</code>.</p>
-        </div>
-
+    <div class="alert alert-secondary border-start border-secondary border-4 mb-4">
+        <p class="fs-5 mb-2"><strong>AI Status:</strong> Not available</p>
+        <p class="mb-0">AI features are not currently available in the browser version of Phoenix Code, so there is nothing to disable or restrict here yet.</p>
     </div>
 
     <div class="mt-4">
@@ -110,52 +77,4 @@
             <li class="list-group-item">Allow specific users to access AI.</li>
         </ul>
     </div>
-
-    <script>
-        // Check if AI is reachable
-        fetch('https://ai.phcode.dev/ping', {
-            method: 'GET',
-            cache: 'no-cache',
-            mode: 'no-cors',
-            timeout: 5000
-        })
-        .then(response => {
-            document.getElementById('checkingStatus').style.display = 'none';
-            document.getElementById('statusResult').style.display = 'block';
-
-            // Show AI is available
-            const statusAlert = document.getElementById('aiStatusAlert');
-            const statusMessage = document.getElementById('statusMessage');
-
-            statusAlert.classList.remove('alert-info');
-            statusAlert.classList.add('alert-success');
-            statusAlert.classList.remove('border-info');
-            statusAlert.classList.add('border-success');
-
-            statusMessage.classList.add('text-success');
-            statusMessage.innerHTML = '✓ Available';
-
-            // Keep original firewall instructions
-            statusAlert.querySelector('p.mb-0').innerHTML = 'To disable Phoenix Code AI in your campus, firewall <code>ai.phcode.dev</code>.';
-        })
-        .catch(error => {
-            document.getElementById('checkingStatus').style.display = 'none';
-            document.getElementById('statusResult').style.display = 'block';
-
-            // Show AI is blocked
-            const statusAlert = document.getElementById('aiStatusAlert');
-            const statusMessage = document.getElementById('statusMessage');
-
-            statusAlert.classList.remove('alert-info');
-            statusAlert.classList.add('alert-danger');
-            statusAlert.classList.remove('border-info');
-            statusAlert.classList.add('border-danger');
-
-            statusMessage.classList.add('text-danger');
-            statusMessage.innerHTML = '✗ Blocked';
-
-            // Show blocked message
-            statusAlert.querySelector('p.mb-0').innerHTML = 'The domain <code>ai.phcode.dev</code> is unreachable and appears to be blocked by firewall.';
-        });
-    </script>
 </div>
